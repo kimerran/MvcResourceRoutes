@@ -12,59 +12,62 @@ namespace Kimerran.MvcResourceRoutes
         /// </summary>
         /// <param name="routes">The route collection</param>
         /// <param name="resourceName"></param>
-        public static void RegisterResourceRoutes(this RouteCollection routes, string resourceName)
-        {          
+        public static void RegisterResourceRoutes(this RouteCollection routes, string resourceName, string pathName = "")
+        {
             // Example: resourceName = Book
+
+            if (string.IsNullOrEmpty(pathName)) pathName = resourceName;
+
 
             // [GET] /book
             routes.MapRoute(resourceName + "@index",
-                resourceName,
-                new { controller = resourceName, action = "Index", id = UrlParameter.Optional },
+                pathName,
+                new { controller = resourceName, action = "Index" },
                 new { httpMethod = new HttpMethodConstraint("GET") }
             );
 
             // [GET] /book/create
             routes.MapRoute(resourceName + "@create",
-                resourceName + "/create",
-                new { controller = resourceName, action = "Create", id = UrlParameter.Optional },
+                pathName + "/create",
+                new { controller = resourceName, action = "Create" },
                 new { httpMethod = new HttpMethodConstraint("GET") }
             );
 
             // [POST] /book
             routes.MapRoute(resourceName + "@store",
-                resourceName,
-                new { controller = resourceName, action = "Store", id = UrlParameter.Optional },
+                pathName,
+                new { controller = resourceName, action = "Store" },
                 new { httpMethod = new HttpMethodConstraint("POST") }
             );
 
             // [GET] /book/28/edit
             routes.MapRoute(resourceName + "@edit",
-                resourceName + "/{id}/edit",
-                new { controller = resourceName, action = "Edit", id = UrlParameter.Optional },
+                pathName + "/{id}/edit",
+                new { controller = resourceName, action = "Edit" },
                 new { httpMethod = new HttpMethodConstraint("GET") }
             );
 
             // [GET] /book/28
             routes.MapRoute(resourceName + "@show",
-                resourceName + "/{id}",
-                new { controller = resourceName, action = "Show", id = UrlParameter.Optional },
+                pathName + "/{id}",
+                new { controller = resourceName, action = "Show" },
                 new { httpMethod = new HttpMethodConstraint("GET") }
             );
 
             // [PUT] /book/28
             routes.MapRoute(resourceName + "@update",
-                resourceName + "/{id}",
-                new { controller = resourceName, action = "Update", id = UrlParameter.Optional },
+                pathName + "/{id}",
+                new { controller = resourceName, action = "Update" },
                 new { httpMethod = new HttpMethodConstraint("PUT") }
             );
 
             // [DELETE] /book/28
             routes.MapRoute(resourceName + "@delete",
-                resourceName + "/{id}",
-                new { controller = resourceName, action = "Delete", id = UrlParameter.Optional },
+                pathName + "/{id}",
+                new { controller = resourceName, action = "Delete" },
                 new { httpMethod = new HttpMethodConstraint("DELETE") }
             );
         }
-   
+
     }
 }
