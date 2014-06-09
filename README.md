@@ -23,8 +23,8 @@ routes.RegisterResourceRoutes("Book");
 Verb          | Path          | Action  | Common usage
 ------------- | ------------- | ------- | ------------
 GET           | /book         | Index   | Returns list of books
-GET           | /book/create  | Create  | Returns form for adding a new book
-POST          | /book         | Store   | Adds a new book
+GET           | /book/new     | New     | Returns form for adding a new book
+POST          | /book         | Create  | Adds a new book
 GET           | /book/28/edit | Edit    | Returns a form for editing a book
 GET           | /book/28      | Show    | Shows existing book information
 PUT           | /book/28      | Update  | Updates existing book
