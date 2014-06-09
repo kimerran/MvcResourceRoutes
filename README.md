@@ -30,3 +30,10 @@ GET           | /book/28      | Show    | Shows existing book information
 PUT           | /book/28      | Update  | Updates existing book
 DELETE        | /book/28      | Delete  | Deletes existing book
 
+
+### Customization
+
+You can override default action names by calling __SetActionMethod__ method as shown below.
+```csharp
+MvcResourceRoutes.SetActionName("index", "Listing");
+```
